@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.databinding.DataBindingUtil
+import androidx.room.Room
+import com.nokopi.marketregistersystem.data.UserDataBase
 import com.nokopi.marketregistersystem.databinding.ActivityMainBinding
 import com.nokopi.marketregistersystem.ui.MainViewModel
 
@@ -19,6 +21,13 @@ class MainActivity : AppCompatActivity() {
         binding.vm = viewModel
         binding.lifecycleOwner = this
         nfcReader.setListener(nfcReaderListener)
+
+        val db = Room.databaseBuilder(
+            this,
+            UserDataBase::class.java, "user-database"
+        ).build()
+        val userDao = db.userDao()
+
     }
 
     private val nfcReaderListener = object : NFCReaderInterface{
