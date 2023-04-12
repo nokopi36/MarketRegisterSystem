@@ -1,32 +1,30 @@
 package com.nokopi.marketregistersystem
 
+import MainViewModelFactory
 import android.nfc.Tag
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.databinding.DataBindingUtil
-import androidx.room.Room
-import com.nokopi.marketregistersystem.data.UserDataBase
+import androidx.lifecycle.ViewModelProvider
+import com.nokopi.marketregistersystem.data.UserDatabase
 import com.nokopi.marketregistersystem.databinding.ActivityMainBinding
-import com.nokopi.marketregistersystem.ui.MainViewModel
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-    private val viewModel = MainViewModel()
+    private lateinit var  viewModel: MainViewModel
     private val nfcReader = NFCReader(this, this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-        binding.vm = viewModel
+        val dataSource = UserDatabase.getInstance(this).userDatabaseDao
+        val viewModelFactory = MainViewModelFactory(dataSource)
+        viewModel = ViewModelProvider(this, viewModelFactory)[MainViewModel::class.java]
+        binding.mainViewModel = viewModel
         binding.lifecycleOwner = this
         nfcReader.setListener(nfcReaderListener)
 
-        val db = Room.databaseBuilder(
-            this,
-            UserDataBase::class.java, "user-database"
-        ).build()
-        val userDao = db.userDao()
 
     }
 
@@ -34,6 +32,7 @@ class MainActivity : AppCompatActivity() {
         override fun onReadTag(tag: Tag) {
             val idm = tag.id
             tag.techList
+            viewModel.getUserId(byteToHex(idm))
             Log.i("onReadTag", byteToHex(idm))
         }
 

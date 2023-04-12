@@ -5,8 +5,8 @@
 
     <data>
         <variable
-            name="vm"
-            type="com.nokopi.marketregistersystem.ui.MainViewModel" />
+            name="mainViewModel"
+            type="com.nokopi.marketregistersystem.MainViewModel" />
 
     </data>
 
