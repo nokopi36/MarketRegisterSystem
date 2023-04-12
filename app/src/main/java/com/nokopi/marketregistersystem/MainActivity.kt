@@ -32,7 +32,17 @@ class MainActivity : AppCompatActivity() {
         override fun onReadTag(tag: Tag) {
             val idm = tag.id
             tag.techList
-            viewModel.getUserId(byteToHex(idm))
+            if (viewModel.getUserId(byteToHex(idm))) {
+                val userFragment = UserFragment()
+                val transaction = supportFragmentManager.beginTransaction()
+                transaction.add(R.id.fragmentView, userFragment)
+                transaction.commit()
+            } else {
+                val signUpFragment = SignUpFragment()
+                val transaction = supportFragmentManager.beginTransaction()
+                transaction.add(R.id.fragmentView, signUpFragment)
+                transaction.commit()
+            }
             Log.i("onReadTag", byteToHex(idm))
         }
 
@@ -61,6 +71,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onPause() {
         super.onPause()
+        Log.i("Pause","onPause")
         nfcReader.stop()
     }
 
