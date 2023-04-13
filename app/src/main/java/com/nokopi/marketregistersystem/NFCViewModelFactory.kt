@@ -1,7 +1,8 @@
+package com.nokopi.marketregistersystem
+
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.nokopi.marketregistersystem.data.UserDatabaseDao
-import com.nokopi.marketregistersystem.NFCViewModel
 
 class NFCViewModelFactory(private val dataSource: UserDatabaseDao) : ViewModelProvider.Factory {
     @Suppress("unchecked_cast")

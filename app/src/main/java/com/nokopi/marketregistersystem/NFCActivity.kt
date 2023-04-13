@@ -1,6 +1,5 @@
 package com.nokopi.marketregistersystem
 
-import NFCViewModelFactory
 import android.nfc.Tag
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
