@@ -33,7 +33,7 @@ class NFCActivity : AppCompatActivity() {
             val idm = tag.id
             tag.techList
             val mainActivityIntent = Intent(this@NFCActivity, MainActivity::class.java)
-            mainActivityIntent.putExtra("getUserResult", viewModel.getUserId(byteToHex(idm)))
+            mainActivityIntent.putExtra("inputId", byteToHex(idm))
             startActivity(mainActivityIntent)
             Log.i("onReadTag", byteToHex(idm))
         }

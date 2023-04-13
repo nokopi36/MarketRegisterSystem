@@ -8,16 +8,20 @@ import kotlinx.coroutines.launch
 
 class NFCViewModel(private val database: UserDatabaseDao): ViewModel() {
 
-    fun getUserId(inputId: String): Boolean {
+    fun getUserIdResult(inputId: String): Boolean {
         var getId = ""
         viewModelScope.launch {
-            getId = database.getUserId(inputId)
+            getId = getUserId(inputId)
         }
         Log.i("nfc2", inputId)
         Log.i("getId", getId)
         Log.i("Bool", (getId == inputId).toString())
 
         return getId == inputId
+    }
+
+    private suspend fun getUserId(inputId: String): String {
+        return database.getUserId(inputId)
     }
 
 }
