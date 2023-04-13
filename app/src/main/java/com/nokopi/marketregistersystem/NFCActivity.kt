@@ -1,5 +1,6 @@
 package com.nokopi.marketregistersystem
 
+import android.content.Intent
 import android.nfc.Tag
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -31,17 +32,9 @@ class NFCActivity : AppCompatActivity() {
         override fun onReadTag(tag: Tag) {
             val idm = tag.id
             tag.techList
-            if (viewModel.getUserId(byteToHex(idm))) {
-                val userFragment = UserFragment()
-                val transaction = supportFragmentManager.beginTransaction()
-                transaction.add(R.id.fragmentView, userFragment)
-                transaction.commit()
-            } else {
-                val signUpFragment = SignUpFragment()
-                val transaction = supportFragmentManager.beginTransaction()
-                transaction.add(R.id.fragmentView, signUpFragment)
-                transaction.commit()
-            }
+            val mainActivityIntent = Intent(this@NFCActivity, MainActivity::class.java)
+            mainActivityIntent.putExtra("getUserResult", viewModel.getUserId(byteToHex(idm)))
+            startActivity(mainActivityIntent)
             Log.i("onReadTag", byteToHex(idm))
         }
 
@@ -65,6 +58,7 @@ class NFCActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
+        Log.i("Resume", "onResume")
         nfcReader.start()
     }
 
