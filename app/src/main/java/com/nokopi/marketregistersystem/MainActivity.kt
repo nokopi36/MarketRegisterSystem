@@ -4,24 +4,37 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.OnBackPressedCallback
+import androidx.lifecycle.ViewModelProvider
+import com.nokopi.marketregistersystem.data.UserDatabase
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var  viewModel: NFCViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        val dataSource = UserDatabase.getInstance(this).userDatabaseDao
+        val viewModelFactory = NFCViewModelFactory(dataSource)
+        viewModel = ViewModelProvider(this, viewModelFactory)[NFCViewModel::class.java]
+
         onBackPressedDispatcher.addCallback(callback)
-        val getUserResult = intent.getBooleanExtra("getUserResult", false)
-        Log.i("getUserResult", getUserResult.toString())
+        val inputId = intent.getStringExtra("inputId")
+        val args = Bundle()
+        args.putString("inputId", inputId)
+        Log.i("getUserResult", inputId.toString())
         if (savedInstanceState == null) {
-            if (getUserResult) {
+            if (viewModel.getUserIdResult(inputId.toString())) {
+                val fragment = UserFragment()
+                fragment.arguments = args
                 supportFragmentManager.beginTransaction()
-                    .replace(R.id.container, UserFragment())
+                    .replace(R.id.container, fragment)
                     .commitNow()
             } else {
+                val fragment = SignUpFragment()
+                fragment.arguments = args
                 supportFragmentManager.beginTransaction()
-                    .replace(R.id.container, SignUpFragment())
+                    .replace(R.id.container, fragment)
                     .commitNow()
             }
         }
