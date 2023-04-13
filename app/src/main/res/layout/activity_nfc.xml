@@ -5,15 +5,15 @@
 
     <data>
         <variable
-            name="mainViewModel"
-            type="com.nokopi.marketregistersystem.MainViewModel" />
+            name="nfcViewModel"
+            type="com.nokopi.marketregistersystem.NFCViewModel" />
 
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".MainActivity"
+        tools:context=".NFCActivity"
         android:id="@+id/parentLayout">
 
         <androidx.fragment.app.FragmentContainerView

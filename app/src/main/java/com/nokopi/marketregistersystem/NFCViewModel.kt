@@ -6,7 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.nokopi.marketregistersystem.data.UserDatabaseDao
 import kotlinx.coroutines.launch
 
-class MainViewModel(private val database: UserDatabaseDao): ViewModel() {
+class NFCViewModel(private val database: UserDatabaseDao): ViewModel() {
 
     fun getUserId(inputId: String): Boolean {
         var getId = ""
