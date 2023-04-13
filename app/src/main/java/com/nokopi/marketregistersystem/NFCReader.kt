@@ -15,7 +15,7 @@ class NFCReader(private val context: Context, private val activity: Activity): a
     private var nfcAdapter : NfcAdapter? = null
     private var callback : CustomReaderCallback? = null
 
-    private var listener: MainActivity.NFCReaderInterface? = null
+    private var listener: NFCActivity.NFCReaderInterface? = null
     interface Listener
 
     fun start(){
@@ -45,7 +45,7 @@ class NFCReader(private val context: Context, private val activity: Activity): a
     }
 
     fun setListener(listener: Listener?) {         // イベント受け取り先を設定
-        if (listener is MainActivity.NFCReaderInterface) {
+        if (listener is NFCActivity.NFCReaderInterface) {
             this.listener = listener
         }
     }

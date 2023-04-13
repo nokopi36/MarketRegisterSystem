@@ -1,6 +1,5 @@
 package com.nokopi.marketregistersystem
 
-import MainViewModelFactory
 import android.nfc.Tag
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -8,20 +7,20 @@ import android.util.Log
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.nokopi.marketregistersystem.data.UserDatabase
-import com.nokopi.marketregistersystem.databinding.ActivityMainBinding
+import com.nokopi.marketregistersystem.databinding.ActivityNfcBinding
 
-class MainActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityMainBinding
-    private lateinit var  viewModel: MainViewModel
+class NFCActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityNfcBinding
+    private lateinit var  viewModel: NFCViewModel
     private val nfcReader = NFCReader(this, this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_nfc)
         val dataSource = UserDatabase.getInstance(this).userDatabaseDao
-        val viewModelFactory = MainViewModelFactory(dataSource)
-        viewModel = ViewModelProvider(this, viewModelFactory)[MainViewModel::class.java]
-        binding.mainViewModel = viewModel
+        val viewModelFactory = NFCViewModelFactory(dataSource)
+        viewModel = ViewModelProvider(this, viewModelFactory)[NFCViewModel::class.java]
+        binding.nfcViewModel = viewModel
         binding.lifecycleOwner = this
         nfcReader.setListener(nfcReaderListener)
 
@@ -32,7 +31,17 @@ class MainActivity : AppCompatActivity() {
         override fun onReadTag(tag: Tag) {
             val idm = tag.id
             tag.techList
-            viewModel.getUserId(byteToHex(idm))
+            if (viewModel.getUserId(byteToHex(idm))) {
+                val userFragment = UserFragment()
+                val transaction = supportFragmentManager.beginTransaction()
+                transaction.add(R.id.fragmentView, userFragment)
+                transaction.commit()
+            } else {
+                val signUpFragment = SignUpFragment()
+                val transaction = supportFragmentManager.beginTransaction()
+                transaction.add(R.id.fragmentView, signUpFragment)
+                transaction.commit()
+            }
             Log.i("onReadTag", byteToHex(idm))
         }
 
@@ -61,6 +70,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onPause() {
         super.onPause()
+        Log.i("Pause","onPause")
         nfcReader.stop()
     }
 
