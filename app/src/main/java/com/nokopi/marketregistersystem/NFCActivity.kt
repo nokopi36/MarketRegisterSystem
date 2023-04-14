@@ -5,8 +5,10 @@ import android.nfc.Tag
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.core.app.AppLaunchChecker
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import com.nokopi.marketregistersystem.admin.AdminRegisterActivity
 import com.nokopi.marketregistersystem.data.UserDatabase
 import com.nokopi.marketregistersystem.databinding.ActivityNfcBinding
 
@@ -24,6 +26,13 @@ class NFCActivity : AppCompatActivity() {
         binding.nfcViewModel = viewModel
         binding.lifecycleOwner = this
         nfcReader.setListener(nfcReaderListener)
+
+        val initStartUp = AppLaunchChecker.hasStartedFromLauncher(this)
+        if (!initStartUp) {
+            AppLaunchChecker.onActivityCreate(this)
+            val adminIntent = Intent(this, AdminRegisterActivity::class.java)
+            startActivity(adminIntent)
+        }
 
 
     }
