@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">MarketRegisterSystem</string>
     <string name="user_name">名前</string>
+    <string name="admin_register">管理者登録</string>
+    <string name="sign_up">ユーザー新規登録</string>
+    <string name="password">パスワード作成</string>
+    <string name="register">登録</string>
 </resources>
