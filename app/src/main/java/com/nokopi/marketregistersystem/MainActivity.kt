@@ -23,14 +23,19 @@ class MainActivity : AppCompatActivity() {
         val args = Bundle()
         args.putString("inputId", inputId)
         Log.i("getUserResult", inputId.toString())
-        if (savedInstanceState == null) {
-            if (viewModel.getUserIdResult(inputId.toString())) {
+
+        viewModel.getUserIdResult(inputId.toString())
+
+        viewModel.isNewUser.observe(this) {
+            if (it) {
+                Log.i("Bool in main", it.toString())
                 val fragment = UserFragment()
                 fragment.arguments = args
                 supportFragmentManager.beginTransaction()
                     .replace(R.id.container, fragment)
                     .commitNow()
             } else {
+                Log.i("Bool in main", it.toString())
                 val fragment = SignUpFragment()
                 fragment.arguments = args
                 supportFragmentManager.beginTransaction()
