@@ -5,4 +5,5 @@
     <string name="sign_up">ユーザー新規登録</string>
     <string name="password">パスワード作成</string>
     <string name="register">登録</string>
+    <string name="balance">残高：%d円</string>
 </resources>
