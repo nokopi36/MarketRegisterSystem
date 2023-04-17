@@ -21,13 +21,16 @@ class SignUpFragment: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_signup, container, false)
-        binding.lifecycleOwner = this
+        binding.lifecycleOwner = viewLifecycleOwner
+        val inputId = requireArguments().getString("inputId") ?: "noId"
         val application = requireNotNull(this.activity).application
         val dataSource = UserDatabase.getInstance(application).userDatabaseDao
-        val viewModelFactory = SignUpViewModelFactory(dataSource)
+        val viewModelFactory = SignUpViewModelFactory(dataSource, inputId)
         viewModel = ViewModelProvider(this, viewModelFactory)[SignUpViewModel::class.java]
         binding.signUpViewModel = viewModel
+
         return binding.root
     }
 
