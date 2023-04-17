@@ -43,7 +43,7 @@ class UserDatabaseTest {
 
 
     @Test
-    fun insertAndGet() {
+    suspend fun insertAndGet() {
         val user = User(userId = "test", userName = "Hiyama", userBalance = 10000)
         userDao.insert(user)
         val userInfo = userDao.getUserId("test")
