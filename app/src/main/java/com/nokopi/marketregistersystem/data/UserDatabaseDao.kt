@@ -13,8 +13,8 @@ interface UserDatabaseDao {
     @Update
     suspend fun update(user: User)
 
-    @Query("SELECT * FROM user_info_table WHERE id = :key")
-    suspend fun get(key: Int): User?
+    @Query("SELECT * FROM user_info_table WHERE user_id = :user_id")
+    suspend fun get(user_id: String): User?
 
     @Query("SELECT user_id FROM user_info_table WHERE user_id = :user_id")
     suspend fun getUserId(user_id: String): String
