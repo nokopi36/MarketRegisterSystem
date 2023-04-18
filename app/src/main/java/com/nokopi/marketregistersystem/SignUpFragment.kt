@@ -1,7 +1,7 @@
 package com.nokopi.marketregistersystem
 
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -36,8 +36,15 @@ class SignUpFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val inputId = requireArguments().getString("inputId")
-        Log.i("inputId in SignUp", inputId.toString())
+
+        viewModel.finishSignUp.observe(viewLifecycleOwner) {
+            if (it) {
+                val nfcIntent = Intent(context, NFCActivity::class.java)
+                startActivity(nfcIntent)
+                viewModel.finishSignUpComplete()
+            }
+        }
+
     }
 
 }

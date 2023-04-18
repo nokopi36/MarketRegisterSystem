@@ -9,6 +9,7 @@ import androidx.core.app.AppLaunchChecker
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.nokopi.marketregistersystem.admin.AdminRegisterActivity
+import com.nokopi.marketregistersystem.admin.AdminSignInActivity
 import com.nokopi.marketregistersystem.data.UserDatabase
 import com.nokopi.marketregistersystem.databinding.ActivityNfcBinding
 
@@ -32,6 +33,14 @@ class NFCActivity : AppCompatActivity() {
             AppLaunchChecker.onActivityCreate(this)
             val adminIntent = Intent(this, AdminRegisterActivity::class.java)
             startActivity(adminIntent)
+        }
+
+        viewModel.goAdminSignIn.observe(this) {
+            if (it) {
+                val adminSignInIntent = Intent(this, AdminSignInActivity::class.java)
+                startActivity(adminSignInIntent)
+                viewModel.goSignInComplete()
+            }
         }
 
 

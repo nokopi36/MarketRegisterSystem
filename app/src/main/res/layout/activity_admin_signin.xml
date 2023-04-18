@@ -1,20 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
         <variable
-            name="adminRegisterViewModel"
-            type="com.nokopi.marketregistersystem.admin.AdminRegisterViewModel" />
+            name="adminSignInViewModel"
+            type="com.nokopi.marketregistersystem.admin.AdminSignInViewModel" />
 
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".admin.AdminRegisterActivity">
+        android:layout_height="match_parent">
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline2"
@@ -29,7 +27,7 @@
             android:background="#CDDC39"
             android:backgroundTint="#CDDC39"
             android:gravity="center"
-            android:text="@string/admin_register"
+            android:text="@string/admin_sign_in"
             android:textSize="25sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@id/guideline2"
@@ -51,8 +49,8 @@
                 android:id="@+id/userName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@={adminRegisterViewModel.userNameText}"
-                android:onTextChanged="@{() -> adminRegisterViewModel.updateButton()}"
+                android:text="@={adminSignInViewModel.userNameText}"
+                android:onTextChanged="@{() -> adminSignInViewModel.updateButton()}"
                 android:inputType="textPersonName" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -61,7 +59,7 @@
             android:id="@+id/passWordBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/create_password"
+            android:hint="@string/password"
             app:passwordToggleEnabled="true"
             app:layout_constraintTop_toBottomOf="@id/userNameBox"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -71,8 +69,8 @@
                 android:id="@+id/passWord"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@={adminRegisterViewModel.passwordText}"
-                android:onTextChanged="@{() -> adminRegisterViewModel.updateButton()}"
+                android:text="@={adminSignInViewModel.passwordText}"
+                android:onTextChanged="@{() -> adminSignInViewModel.updateButton()}"
                 android:inputType="textPassword" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -84,8 +82,8 @@
             app:layout_constraintTop_toBottomOf="@id/passWordBox"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            android:onClick="@{() -> adminRegisterViewModel.registerAdmin()}"
-            android:enabled="@{adminRegisterViewModel.isEnabled}"/>
+            android:onClick="@{() -> adminSignInViewModel.checkSignIn()}"
+            android:enabled="@{adminSignInViewModel.isEnabled}"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

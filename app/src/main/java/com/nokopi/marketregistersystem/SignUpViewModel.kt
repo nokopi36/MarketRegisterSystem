@@ -19,6 +19,10 @@ class SignUpViewModel(private val database: UserDatabaseDao, private val inputId
     val isEnabled: LiveData<Boolean>
         get() = _isEnabled
 
+    private val _finishSignUp: MutableLiveData<Boolean> = MutableLiveData<Boolean>(false)
+    val finishSignUp: LiveData<Boolean>
+        get() = _finishSignUp
+
 
     fun signUpUser() {
         val inputUserName = userNameText.value.toString()
@@ -29,6 +33,7 @@ class SignUpViewModel(private val database: UserDatabaseDao, private val inputId
                 userBalance = 0
             )
             database.insert(user)
+            finishSignUp()
         }
         Log.i("userName", userName.value.toString())
         Log.i("userId", inputId)
@@ -38,6 +43,14 @@ class SignUpViewModel(private val database: UserDatabaseDao, private val inputId
         val isBlank = userName.value.isNullOrBlank()
         Log.i("isBlank", isBlank.toString())
         _isEnabled.value = !isBlank
+    }
+
+    private fun finishSignUp() {
+        _finishSignUp.value = true
+    }
+
+    fun finishSignUpComplete() {
+        _finishSignUp.value = false
     }
 
 }

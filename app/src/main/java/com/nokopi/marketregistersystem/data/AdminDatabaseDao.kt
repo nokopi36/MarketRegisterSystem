@@ -15,4 +15,7 @@ interface AdminDatabaseDao {
 
     @Query("SELECT password FROM admin_info_table WHERE password = :password")
     suspend fun getPassword(password: String): String
+
+    @Query("SELECT * FROM admin_info_table WHERE admin_name = :admin_name")
+    suspend fun getAdmin(admin_name: String): Admin?
 }

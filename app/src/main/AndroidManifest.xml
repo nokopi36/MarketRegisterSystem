@@ -18,8 +18,14 @@
         android:theme="@style/Theme.MarketRegisterSystem"
         tools:targetApi="31">
         <activity
+            android:name=".admin.AdminActivity"
+            android:exported="false" />
+        <activity
             android:name=".admin.AdminRegisterActivity"
             android:exported="false" />
+        <activity
+            android:name=".admin.AdminSignInActivity"
+            android:exported="false"/>
         <activity
             android:name=".MainActivity"
             android:exported="false" />
