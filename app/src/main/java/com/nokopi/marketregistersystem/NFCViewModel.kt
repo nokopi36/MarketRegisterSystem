@@ -14,6 +14,10 @@ class NFCViewModel(private val database: UserDatabaseDao): ViewModel() {
     val isNewUser: LiveData<Boolean>
         get() = _isNewUser
 
+    private val _goAdminSignIn = MutableLiveData<Boolean>()
+    val goAdminSignIn: LiveData<Boolean>
+        get() = _goAdminSignIn
+
     fun getUserIdResult(inputId: String) {
         viewModelScope.launch {
             val getId = getUserId(inputId)
@@ -26,6 +30,14 @@ class NFCViewModel(private val database: UserDatabaseDao): ViewModel() {
 
     private suspend fun getUserId(inputId: String): String {
         return database.getUserId(inputId)
+    }
+
+    fun goSignIn() {
+        _goAdminSignIn.value = true
+    }
+
+    fun goSignInComplete() {
+        _goAdminSignIn.value = false
     }
 
 }
