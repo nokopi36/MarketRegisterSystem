@@ -1,5 +1,6 @@
 package com.nokopi.marketregistersystem.data
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
@@ -19,6 +20,7 @@ interface UserDatabaseDao {
     @Query("SELECT user_id FROM user_info_table WHERE user_id = :user_id")
     suspend fun getUserId(user_id: String): String
 
-
+    @Query("SELECT * FROM user_info_table")
+    fun getUserName(): LiveData<List<User>>
 
 }

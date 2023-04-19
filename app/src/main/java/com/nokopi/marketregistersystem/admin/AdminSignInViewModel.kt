@@ -22,7 +22,7 @@ class AdminSignInViewModel(private val database: AdminDatabaseDao): ViewModel() 
     val isEnabled: LiveData<Boolean>
         get() = _isEnabled
 
-    private val _signIn: MutableLiveData<Boolean> = MutableLiveData<Boolean>(false)
+    private val _signIn: MutableLiveData<Boolean> = MutableLiveData<Boolean>()
     val signIn: LiveData<Boolean>
         get() = _signIn
 

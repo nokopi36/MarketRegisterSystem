@@ -7,5 +7,17 @@
     <fragment
         android:id="@+id/adminFragment"
         android:name="com.nokopi.marketregistersystem.admin.AdminFragment"
-        android:label="AdminFragment" />
+        android:label="AdminFragment" >
+        <action
+            android:id="@+id/action_adminFragment_to_allUserFragment"
+            app:destination="@id/allUserFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/allUserFragment"
+        android:name="com.nokopi.marketregistersystem.admin.AllUserFragment"
+        android:label="AllUserFragment" >
+<!--        <argument-->
+<!--            android:name="user"-->
+<!--            app:argType="com.nokopi.marketregistersystem.data.User"/>-->
+    </fragment>
 </navigation>
