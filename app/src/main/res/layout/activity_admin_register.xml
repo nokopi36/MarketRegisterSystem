@@ -42,7 +42,7 @@
             android:id="@+id/userNameBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/user_name"
+            android:hint="@string/name"
             app:layout_constraintTop_toBottomOf="@id/guideline2"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent">

@@ -1,10 +1,7 @@
 package com.nokopi.marketregistersystem.data
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.Query
-import androidx.room.Update
+import androidx.room.*
 
 @Dao
 interface UserDatabaseDao {
@@ -13,6 +10,9 @@ interface UserDatabaseDao {
 
     @Update
     suspend fun update(user: User)
+
+    @Delete
+    suspend fun delete(user: User)
 
     @Query("SELECT * FROM user_info_table WHERE user_id = :user_id")
     suspend fun get(user_id: String): User?

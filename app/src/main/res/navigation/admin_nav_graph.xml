@@ -16,8 +16,21 @@
         android:id="@+id/allUserFragment"
         android:name="com.nokopi.marketregistersystem.admin.AllUserFragment"
         android:label="AllUserFragment" >
-<!--        <argument-->
-<!--            android:name="user"-->
-<!--            app:argType="com.nokopi.marketregistersystem.data.User"/>-->
+        <action
+            android:id="@+id/action_allUserFragment_to_userInfoFragment"
+            app:destination="@id/userInfoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/userInfoFragment"
+        android:name="com.nokopi.marketregistersystem.admin.UserInfoFragment"
+        android:label="UserInfoFragment" >
+        <argument
+            android:name="user"
+            app:argType="com.nokopi.marketregistersystem.data.User"/>
+        <action
+            android:id="@+id/action_userInfoFragment_to_adminFragment"
+            app:destination="@id/adminFragment"
+            app:popUpTo="@id/adminFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 </navigation>

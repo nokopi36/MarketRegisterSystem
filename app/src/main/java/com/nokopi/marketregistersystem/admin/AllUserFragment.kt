@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.nokopi.marketregistersystem.CustomAdapter
@@ -42,7 +43,8 @@ class AllUserFragment : Fragment() {
         val dividerItemDecoration = DividerItemDecoration(requireContext(), layoutManager.orientation)
         val adapter = CustomAdapter(object : CustomAdapter.OnItemClickListener {
             override fun itemClick(user: User) {
-
+                val action = AllUserFragmentDirections.actionAllUserFragmentToUserInfoFragment(user)
+                findNavController().navigate(action)
             }
         })
 

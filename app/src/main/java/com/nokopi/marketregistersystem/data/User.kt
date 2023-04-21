@@ -15,4 +15,4 @@ data class User(
 
     @ColumnInfo(name = "user_balance")
     var userBalance: Int
-)
+): java.io.Serializable
