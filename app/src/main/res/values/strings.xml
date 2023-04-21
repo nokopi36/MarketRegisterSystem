@@ -1,8 +1,9 @@
 <resources>
     <string name="app_name">MarketRegisterSystem</string>
-    <string name="user_name">名前</string>
+    <string name="name">名前</string>
     <string name="admin_register">管理者登録</string>
     <string name="admin_sign_in">管理者ログイン</string>
+    <string name="sign_in">ログイン</string>
     <string name="sign_up">ユーザー新規登録</string>
     <string name="create_password">パスワード作成</string>
     <string name="password">パスワード</string>
@@ -10,4 +11,6 @@
     <string name="balance">残高：%d円</string>
     <string name="all_users">ユーザー一覧</string>
     <string name="admin">管理者 %s 様</string>
+    <string name="user_name">ユーザー名：%s</string>
+    <string name="user_id">ユーザーID：%s</string>
 </resources>
