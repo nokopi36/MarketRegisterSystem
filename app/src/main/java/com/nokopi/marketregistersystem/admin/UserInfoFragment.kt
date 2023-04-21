@@ -13,12 +13,14 @@ import androidx.navigation.fragment.navArgs
 import com.nokopi.marketregistersystem.R
 import com.nokopi.marketregistersystem.data.UserDatabase
 import com.nokopi.marketregistersystem.databinding.FragmentUserInfoBinding
+import com.nokopi.marketregistersystem.view.ChangeBalanceDialogFragment
 
 class UserInfoFragment: Fragment() {
 
     private lateinit var binding: FragmentUserInfoBinding
     private lateinit var viewModel: UserInfoViewModel
     private val args: UserInfoFragmentArgs by navArgs()
+    private lateinit var dialog: ChangeBalanceDialogFragment
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,6 +35,7 @@ class UserInfoFragment: Fragment() {
         val viewModelFactory = UserInfoViewModelFactory(dataSource, user)
         viewModel = ViewModelProvider(this, viewModelFactory)[UserInfoViewModel::class.java]
         binding.userInfoViewModel = viewModel
+        dialog = ChangeBalanceDialogFragment(dataSource, user)
 
         return binding.root
     }
@@ -61,6 +64,12 @@ class UserInfoFragment: Fragment() {
                 val action = UserInfoFragmentDirections.actionUserInfoFragmentToAdminFragment()
                 findNavController().navigate(action)
                 viewModel.goAdminCompleted()
+            }
+        }
+
+        viewModel.isClickChangeBalance.observe(viewLifecycleOwner) {
+            if (it) {
+                dialog.show(childFragmentManager, "changeBalance")
             }
         }
 
