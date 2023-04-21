@@ -51,7 +51,7 @@
                 android:id="@+id/user_name"
                 android:text="@={signUpViewModel.userNameText}"
                 android:onTextChanged="@{() -> signUpViewModel.updateButton()}"
-                android:hint="@string/user_name" />
+                android:hint="@string/name" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
