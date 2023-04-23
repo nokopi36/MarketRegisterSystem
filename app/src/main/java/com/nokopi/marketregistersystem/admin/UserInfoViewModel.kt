@@ -30,12 +30,24 @@ class UserInfoViewModel(private val database: UserDatabaseDao, private val user:
     val isClickErase: LiveData<Boolean>
         get() = _isClickErase
 
+    private var _isClickChaneBalance: MutableLiveData<Boolean> = MutableLiveData<Boolean>()
+    val isClickChangeBalance: LiveData<Boolean>
+        get() = _isClickChaneBalance
+
     fun onClickErase() {
         _isClickErase.value = true
     }
 
     fun noErase() {
         _isClickErase.value = false
+    }
+
+    fun onClickChangeBalance() {
+        _isClickChaneBalance.value = true
+    }
+
+    fun noChangeBalance() {
+        _isClickChaneBalance.value = false
     }
 
     fun deleteUser() {

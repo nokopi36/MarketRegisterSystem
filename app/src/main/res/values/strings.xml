@@ -13,4 +13,6 @@
     <string name="admin">管理者 %s 様</string>
     <string name="user_name">ユーザー名：%s</string>
     <string name="user_id">ユーザーID：%s</string>
+    <string name="erase">削除</string>
+    <string name="change_balance">残高変更</string>
 </resources>
