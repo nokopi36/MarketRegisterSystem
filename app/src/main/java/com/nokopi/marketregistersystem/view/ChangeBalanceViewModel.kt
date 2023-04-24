@@ -11,7 +11,7 @@ import kotlinx.coroutines.launch
 class ChangeBalanceViewModel(private val database: UserDatabaseDao, private val user: User) :
     ViewModel() {
 
-    val newBalance: MutableLiveData<String> = MutableLiveData<String>(user.userBalance.toString())
+    val newBalance: MutableLiveData<String> = MutableLiveData<String>()
     private val _newBalance: LiveData<String>
         get() = newBalance
 

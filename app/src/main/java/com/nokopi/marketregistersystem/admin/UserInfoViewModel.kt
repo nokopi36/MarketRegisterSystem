@@ -50,6 +50,15 @@ class UserInfoViewModel(private val database: UserDatabaseDao, private val user:
         _isClickChaneBalance.value = false
     }
 
+    fun updateUserInfo() {
+        viewModelScope.launch {
+            val updateUser = database.get(user.userId)
+            _userInfoName.value = updateUser?.userName ?: "error"
+            _userInfoId.value = updateUser?.userId ?: "error"
+            _userInfoBalance.value = updateUser?.userBalance ?: -1
+        }
+    }
+
     fun deleteUser() {
         viewModelScope.launch {
             database.delete(user)
