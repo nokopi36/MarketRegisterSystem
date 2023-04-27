@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.nokopi.marketregistersystem.data.User
 
-class CustomAdapter(
+class AllUserCustomAdapter(
     private val itemClickListener: OnItemClickListener
 ): ListAdapter<User, ViewHolder>(diff_util) {
 
