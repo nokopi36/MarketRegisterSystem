@@ -13,7 +13,7 @@ import androidx.navigation.fragment.navArgs
 import com.nokopi.marketregistersystem.R
 import com.nokopi.marketregistersystem.data.UserDatabase
 import com.nokopi.marketregistersystem.databinding.FragmentUserInfoBinding
-import com.nokopi.marketregistersystem.view.ChangeBalanceDialogFragment
+import com.nokopi.marketregistersystem.dialog.ChangeBalanceDialogFragment
 
 class UserInfoFragment: Fragment() {
 

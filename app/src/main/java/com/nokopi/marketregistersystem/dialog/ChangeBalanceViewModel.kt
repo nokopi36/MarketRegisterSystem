@@ -1,4 +1,4 @@
-package com.nokopi.marketregistersystem.view
+package com.nokopi.marketregistersystem.dialog
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
