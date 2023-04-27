@@ -11,18 +11,18 @@ import com.nokopi.marketregistersystem.data.User
 
 class AllUserCustomAdapter(
     private val itemClickListener: OnItemClickListener
-): ListAdapter<User, ViewHolder>(diff_util) {
+): ListAdapter<User, AllUserViewHolder>(AllUserDiffCallback()) {
 
     interface OnItemClickListener {
         fun itemClick(user: User)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.layout_item, parent, false)
-        return ViewHolder(view)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AllUserViewHolder {
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.layout_all_user, parent, false)
+        return AllUserViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: AllUserViewHolder, position: Int) {
         val user = getItem(position)
         holder.userName.text = user.userName
         holder.userName.setOnClickListener {
@@ -32,11 +32,11 @@ class AllUserCustomAdapter(
 }
 
 
-class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+class AllUserViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     val userName: TextView = view.findViewById(R.id.userNameText)
 }
 
-val diff_util = object : DiffUtil.ItemCallback<User>() {
+class AllUserDiffCallback : DiffUtil.ItemCallback<User>() {
     // Itemのnameが同じならtrue
     override fun areItemsTheSame(oldItem: User, newItem: User): Boolean {
         return oldItem.userName == newItem.userName
