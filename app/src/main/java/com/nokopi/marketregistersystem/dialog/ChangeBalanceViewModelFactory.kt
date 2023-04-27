@@ -1,8 +1,7 @@
-package com.nokopi.marketregistersystem.view
+package com.nokopi.marketregistersystem.dialog
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.nokopi.marketregistersystem.admin.UserInfoViewModel
 import com.nokopi.marketregistersystem.data.User
 import com.nokopi.marketregistersystem.data.UserDatabaseDao
 

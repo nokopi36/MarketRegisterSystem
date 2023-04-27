@@ -1,7 +1,8 @@
-package com.nokopi.marketregistersystem.view
+package com.nokopi.marketregistersystem.dialog
 
 import android.app.Dialog
 import android.os.Bundle
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProvider
@@ -23,6 +24,9 @@ class ChangeBalanceDialogFragment(private val dataSource: UserDatabaseDao, priva
             .setPositiveButton("変更") { _, _ ->
                 if (viewModel.isBalanceNull()) {
                     viewModel.changeBalance()
+                    Toast.makeText(activity, "変更完了", Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(activity, "残高が入力されていません", Toast.LENGTH_SHORT).show()
                 }
             }
             .setNegativeButton("キャンセル") { dialog, _ ->
