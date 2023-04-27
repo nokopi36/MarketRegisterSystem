@@ -13,5 +13,5 @@ data class Product(
     var productName: String,
 
     @ColumnInfo(name = "product_price")
-    var productPrice: String
+    var productPrice: Int
 )
