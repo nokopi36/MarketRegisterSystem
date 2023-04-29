@@ -12,7 +12,7 @@ import com.nokopi.marketregistersystem.data.Product
 
 class ProductCustomAdapter(
     private val itemClickListener: OnItemClickListener
-): ListAdapter<Product, ViewHolder>(DiffCallback) {
+): ListAdapter<Product, AddProductViewHolder>(DiffCallback) {
 
     private val context = NFCActivity.instance.applicationContext
     private val resources = context.resources
@@ -21,12 +21,12 @@ class ProductCustomAdapter(
         fun itemClick(product: Product)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AddProductViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.layout_product, parent, false)
-        return ViewHolder(view)
+        return AddProductViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: AddProductViewHolder, position: Int) {
         val product = getItem(position)
         holder.productName.text = resources.getString(R.string.purchase_product_name, product.productName)
         holder.productPrice.text = resources.getString(R.string.purchase_product_price, product.productPrice)
@@ -34,14 +34,6 @@ class ProductCustomAdapter(
             itemClickListener.itemClick(product)
         }
     }
-
-//    fun getNameID(): Int {
-//        return R.string.purchase_product_name
-//    }
-//
-//    fun getPriceID(): Int {
-//        return R.string.purchase_product_price
-//    }
 
     companion object {
         private val DiffCallback = object : DiffUtil.ItemCallback<Product>() {
@@ -61,7 +53,7 @@ class ProductCustomAdapter(
 }
 
 
-class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+class AddProductViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     val productName: TextView = view.findViewById(R.id.productName)
     val productPrice: TextView = view.findViewById(R.id.productPrice)
     val deleteBtn: ImageButton = view.findViewById(R.id.productDeleteBtn)
