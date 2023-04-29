@@ -29,4 +29,12 @@ class AdminViewModel : ViewModel() {
         _goAllUser.value = false
     }
 
+    fun goAddProduct() {
+        _goAddProduct.value = true
+    }
+
+    fun goAddProductCompleted() {
+        _goAddProduct.value = false
+    }
+
 }

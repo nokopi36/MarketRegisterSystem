@@ -18,6 +18,11 @@ class NFCActivity : AppCompatActivity() {
     private lateinit var  viewModel: NFCViewModel
     private val nfcReader = NFCReader(this, this)
 
+    companion object {
+        lateinit var instance: NFCActivity
+            private set
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_nfc)
@@ -27,6 +32,7 @@ class NFCActivity : AppCompatActivity() {
         binding.nfcViewModel = viewModel
         binding.lifecycleOwner = this
         nfcReader.setListener(nfcReaderListener)
+        instance = this
 
         val initStartUp = AppLaunchChecker.hasStartedFromLauncher(this)
         if (!initStartUp) {

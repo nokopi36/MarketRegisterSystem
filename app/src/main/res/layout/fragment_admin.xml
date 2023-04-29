@@ -25,6 +25,16 @@
             app:layout_constraintRight_toRightOf="parent"
             android:onClick="@{() -> adminViewModel.goAllUser()}"/>
 
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/productBtn"
+            android:text="@string/all_product"
+            app:layout_constraintTop_toBottomOf="@id/allUserBtn"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:onClick="@{() -> adminViewModel.goAddProduct()}"/>
+
         <TextView
             android:id="@+id/message"
             android:layout_width="wrap_content"
