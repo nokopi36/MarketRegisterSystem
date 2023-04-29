@@ -11,7 +11,7 @@ import com.nokopi.marketregistersystem.data.User
 
 class AllUserCustomAdapter(
     private val itemClickListener: OnItemClickListener
-): ListAdapter<User, AllUserViewHolder>(AllUserDiffCallback()) {
+): ListAdapter<User, AllUserViewHolder>(DiffCallback) {
 
     interface OnItemClickListener {
         fun itemClick(user: User)
@@ -29,22 +29,25 @@ class AllUserCustomAdapter(
             itemClickListener.itemClick(user)
         }
     }
+
+    companion object {
+        private val DiffCallback = object : DiffUtil.ItemCallback<User>() {
+            // Itemのnameが同じならtrue
+            override fun areItemsTheSame(oldItem: User, newItem: User): Boolean {
+                return oldItem.userName == newItem.userName
+            }
+
+            // Itemが同じならtrue
+            override fun areContentsTheSame(oldItem: User, newItem: User): Boolean {
+                return oldItem == newItem
+            }
+
+        }
+    }
+
 }
 
 
 class AllUserViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     val userName: TextView = view.findViewById(R.id.userNameText)
-}
-
-class AllUserDiffCallback : DiffUtil.ItemCallback<User>() {
-    // Itemのnameが同じならtrue
-    override fun areItemsTheSame(oldItem: User, newItem: User): Boolean {
-        return oldItem.userName == newItem.userName
-    }
-
-    // Itemが同じならtrue
-    override fun areContentsTheSame(oldItem: User, newItem: User): Boolean {
-        return oldItem == newItem
-    }
-
 }
