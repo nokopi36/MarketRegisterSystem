@@ -12,7 +12,14 @@
     <string name="all_users">ユーザー一覧</string>
     <string name="admin">管理者 %s 様</string>
     <string name="user_name">ユーザー名：%s</string>
-    <string name="user_id">ユーザーID：%s</string>
+    <string name="user_id">ユーザーID：\n%s</string>
     <string name="erase">削除</string>
     <string name="change_balance">残高変更</string>
+    <string name="product_name">商品名</string>
+    <string name="product_price">値段</string>
+    <string name="new_balance">残高を入力</string>
+    <string name="add_product">商品追加</string>
+    <string name="all_product">商品一覧</string>
+    <string name="purchase_product_name">商品名：%s</string>
+    <string name="purchase_product_price">値段：%d 円</string>
 </resources>

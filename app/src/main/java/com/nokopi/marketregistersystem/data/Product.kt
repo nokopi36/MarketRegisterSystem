@@ -14,4 +14,4 @@ data class Product(
 
     @ColumnInfo(name = "product_price")
     var productPrice: Int
-)
+): java.io.Serializable

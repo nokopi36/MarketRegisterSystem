@@ -1,10 +1,7 @@
 package com.nokopi.marketregistersystem.data
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.Query
-import androidx.room.Update
+import androidx.room.*
 
 @Dao
 interface ProductDatabaseDao {
@@ -14,6 +11,9 @@ interface ProductDatabaseDao {
 
     @Update
     suspend fun update(product: Product)
+
+    @Delete
+    suspend fun delete(product: Product)
 
     @Query("SELECT * FROM product_info_table")
     fun get(): LiveData<List<Product>>

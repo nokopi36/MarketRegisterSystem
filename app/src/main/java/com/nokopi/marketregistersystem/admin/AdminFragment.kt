@@ -40,6 +40,14 @@ class AdminFragment : Fragment() {
             }
         }
 
+        viewModel.goAddProduct.observe(viewLifecycleOwner) {
+            if (it) {
+                val action = AdminFragmentDirections.actionAdminFragmentToProductFragment()
+                findNavController().navigate(action)
+                viewModel.goAddProductCompleted()
+            }
+        }
+
     }
 
 }
