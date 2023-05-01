@@ -1,5 +1,6 @@
 package com.nokopi.marketregistersystem.user
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -30,11 +31,9 @@ class MainActivity : AppCompatActivity() {
         viewModel.isNewUser.observe(this) {
             if (it) {
                 Log.i("Bool in main", it.toString())
-                val fragment = UserFragment()
-                fragment.arguments = args
-                supportFragmentManager.beginTransaction()
-                    .replace(R.id.container, fragment)
-                    .commitNow()
+                val userIntent = Intent(this, UserActivity::class.java)
+                userIntent.putExtra("inputId", inputId)
+                startActivity(userIntent)
             } else {
                 Log.i("Bool in main", it.toString())
                 val fragment = SignUpFragment()
