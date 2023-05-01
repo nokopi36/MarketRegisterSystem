@@ -22,4 +22,5 @@
     <string name="all_product">商品一覧</string>
     <string name="purchase_product_name">商品名：%s</string>
     <string name="purchase_product_price">値段：%d 円</string>
+    <string name="logout">ログアウト</string>
 </resources>

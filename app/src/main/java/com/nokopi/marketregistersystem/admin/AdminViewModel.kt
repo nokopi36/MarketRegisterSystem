@@ -19,6 +19,10 @@ class AdminViewModel : ViewModel() {
     val goAddProduct: LiveData<Boolean>
         get() = _goAddProduct
 
+    private val _logout: MutableLiveData<Boolean> = MutableLiveData<Boolean>()
+    val logout: LiveData<Boolean>
+        get() = _logout
+
 
     fun goAllUser() {
         Log.i("go AllUser", goAllUser.toString())
@@ -35,6 +39,22 @@ class AdminViewModel : ViewModel() {
 
     fun goAddProductCompleted() {
         _goAddProduct.value = false
+    }
+
+    fun goAddAdmin() {
+        _goAddAdmin.value = true
+    }
+
+    fun goAddAdminCompleted() {
+        _goAddAdmin.value = false
+    }
+
+    fun logout() {
+        _logout.value = true
+    }
+
+    fun logoutCompleted() {
+        _logout.value = false
     }
 
 }
