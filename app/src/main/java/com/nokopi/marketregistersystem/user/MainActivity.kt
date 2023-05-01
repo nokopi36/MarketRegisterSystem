@@ -1,10 +1,11 @@
-package com.nokopi.marketregistersystem
+package com.nokopi.marketregistersystem.user
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.OnBackPressedCallback
 import androidx.lifecycle.ViewModelProvider
+import com.nokopi.marketregistersystem.*
 import com.nokopi.marketregistersystem.data.UserDatabase
 
 class MainActivity : AppCompatActivity() {

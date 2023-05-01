@@ -1,4 +1,4 @@
-package com.nokopi.marketregistersystem
+package com.nokopi.marketregistersystem.user
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.nokopi.marketregistersystem.NFCActivity
+import com.nokopi.marketregistersystem.R
 import com.nokopi.marketregistersystem.data.UserDatabase
 import com.nokopi.marketregistersystem.databinding.FragmentSignupBinding
 

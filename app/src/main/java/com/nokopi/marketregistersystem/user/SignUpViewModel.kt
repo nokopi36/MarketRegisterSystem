@@ -1,4 +1,4 @@
-package com.nokopi.marketregistersystem
+package com.nokopi.marketregistersystem.user
 
 import android.util.Log
 import androidx.lifecycle.LiveData

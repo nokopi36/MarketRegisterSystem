@@ -79,4 +79,7 @@ dependencies {
 
     // optional - Paging 3 Integration
     implementation "androidx.room:room-paging:$room_version"
+
+    // メモリリークが発生してないか調べるライブラリ
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.9.1'
 }

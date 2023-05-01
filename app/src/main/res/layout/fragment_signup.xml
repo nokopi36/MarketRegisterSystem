@@ -7,7 +7,7 @@
 
         <variable
             name="signUpViewModel"
-            type="com.nokopi.marketregistersystem.SignUpViewModel" />
+            type="com.nokopi.marketregistersystem.user.SignUpViewModel" />
 
     </data>
 
