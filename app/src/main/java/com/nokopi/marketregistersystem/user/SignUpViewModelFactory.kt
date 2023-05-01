@@ -1,4 +1,4 @@
-package com.nokopi.marketregistersystem
+package com.nokopi.marketregistersystem.user
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

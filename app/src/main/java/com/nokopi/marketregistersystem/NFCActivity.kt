@@ -12,6 +12,7 @@ import com.nokopi.marketregistersystem.admin.AdminRegisterActivity
 import com.nokopi.marketregistersystem.admin.AdminSignInActivity
 import com.nokopi.marketregistersystem.data.UserDatabase
 import com.nokopi.marketregistersystem.databinding.ActivityNfcBinding
+import com.nokopi.marketregistersystem.user.MainActivity
 
 class NFCActivity : AppCompatActivity() {
     private lateinit var binding: ActivityNfcBinding
