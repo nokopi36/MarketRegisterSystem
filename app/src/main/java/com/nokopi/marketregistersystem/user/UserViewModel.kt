@@ -13,11 +13,23 @@ class UserViewModel(private val database: UserDatabaseDao, private val inputId: 
     val balance: LiveData<Int>
         get() = _balance
 
+    private val _logout: MutableLiveData<Boolean> = MutableLiveData<Boolean>()
+    val logout: LiveData<Boolean>
+        get() = _logout
+
     fun getUser(inputId: String) {
         viewModelScope.launch {
             val user = database.get(inputId)
             _balance.value = user?.userBalance ?: -1
         }
+    }
+
+    fun logout() {
+        _logout.value = true
+    }
+
+    fun logoutCompleted() {
+        _logout.value = false
     }
 
 }
