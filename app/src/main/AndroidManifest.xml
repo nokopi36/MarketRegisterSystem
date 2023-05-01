@@ -34,6 +34,10 @@
             android:exported="false"
             android:launchMode="singleTask" />
         <activity
+            android:name=".user.UserActivity"
+            android:exported="false"
+            android:launchMode="singleTask"/>
+        <activity
             android:name=".NFCActivity"
             android:exported="true"
             android:launchMode="singleTask">
