@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.addCallback
 import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -35,6 +36,9 @@ class UserFragment: Fragment() {
         val viewModelFactory = UserViewModelFactory(dataSource, inputId)
         viewModel = ViewModelProvider(this, viewModelFactory)[UserViewModel::class.java]
         binding.userViewModel= viewModel
+
+        // This callback will only be called when MyFragment is at least Started.
+        val callback = requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) { }
 
         return binding.root
     }
