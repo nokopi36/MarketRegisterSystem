@@ -15,7 +15,8 @@ import com.nokopi.marketregistersystem.databinding.FragmentSignupBinding
 
 class SignUpFragment: Fragment() {
 
-    private lateinit var binding: FragmentSignupBinding
+    private var _binding: FragmentSignupBinding? = null
+    private val binding get() = _binding!!
     private lateinit var viewModel: SignUpViewModel
 
     override fun onCreateView(
@@ -24,7 +25,7 @@ class SignUpFragment: Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_signup, container, false)
+        _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_signup, container, false)
         binding.lifecycleOwner = viewLifecycleOwner
         val inputId = requireArguments().getString("inputId") ?: "noId"
         val application = requireNotNull(this.activity).application
@@ -47,6 +48,11 @@ class SignUpFragment: Fragment() {
             }
         }
 
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
 }

@@ -18,7 +18,8 @@ import com.nokopi.marketregistersystem.dialog.AddProductDialogFragment
 
 class ProductFragment : Fragment(){
 
-    private lateinit var binding: FragmentProductBinding
+    private var _binding: FragmentProductBinding? = null
+    private val binding get() = _binding!!
     private lateinit var viewModel: ProductViewModel
     private lateinit var dialog: AddProductDialogFragment
 
@@ -28,7 +29,7 @@ class ProductFragment : Fragment(){
         savedInstanceState: Bundle?
     ): View {
 
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_product, container, false)
+        _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_product, container, false)
         binding.lifecycleOwner = viewLifecycleOwner
         val application = requireNotNull(this.activity).application
         val dataSource = ProductDatabase.getInstance(application).productDatabaseDao
@@ -64,6 +65,11 @@ class ProductFragment : Fragment(){
             dialog.show(childFragmentManager, "addProduct")
         }
 
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
 }
