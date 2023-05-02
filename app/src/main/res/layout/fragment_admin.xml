@@ -46,7 +46,7 @@
             android:onClick="@{() -> adminViewModel.goAddAdmin()}"/>
 
         <Button
-            android:id="@+id/message"
+            android:id="@+id/logoutBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/logout"
