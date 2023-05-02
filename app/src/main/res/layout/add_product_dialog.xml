@@ -33,6 +33,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/productPrice"
             android:inputType="number"
+            android:maxLength="9"
             android:text="@={addProductViewModel.productPrice}"
             android:hint="@string/product_price"
             android:layout_marginTop="8dp"

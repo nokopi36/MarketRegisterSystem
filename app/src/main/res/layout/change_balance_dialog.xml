@@ -19,6 +19,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/newBalance"
             android:inputType="number"
+            android:maxLength="9"
             android:text="@={changeBalanceViewModel.newBalance}"
             android:hint="@string/new_balance"
             android:layout_marginTop="8dp"
