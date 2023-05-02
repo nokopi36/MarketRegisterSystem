@@ -23,4 +23,7 @@
     <string name="purchase_product_name">商品名：%s</string>
     <string name="purchase_product_price">値段：%d 円</string>
     <string name="logout">ログアウト</string>
+    <string name="purchase">購入</string>
+    <string name="charge_balance">残高チャージ</string>
+    <string name="cancel">キャンセル</string>
 </resources>

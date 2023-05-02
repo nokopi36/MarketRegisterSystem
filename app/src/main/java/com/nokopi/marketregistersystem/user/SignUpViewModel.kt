@@ -45,7 +45,7 @@ class SignUpViewModel(private val database: UserDatabaseDao, private val inputId
         _isEnabled.value = !isBlank
     }
 
-    private fun finishSignUp() {
+    fun finishSignUp() {
         _finishSignUp.value = true
     }
 

@@ -55,14 +55,25 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/signOnBtn"
+            android:text="@string/register"
             android:onClick="@{() -> signUpViewModel.signUpUser()}"
             android:enabled="@{signUpViewModel.isEnabled}"
             app:layout_constraintTop_toBottomOf="@id/user_name_layout"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"/>
+
+        <Button
+            android:id="@+id/logoutBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{() -> signUpViewModel.finishSignUp()}"
+            android:text="@string/cancel"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
