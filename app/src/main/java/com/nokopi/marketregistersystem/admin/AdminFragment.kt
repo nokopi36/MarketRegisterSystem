@@ -17,14 +17,15 @@ import com.nokopi.marketregistersystem.databinding.FragmentAdminBinding
 
 class AdminFragment : Fragment() {
 
-    private lateinit var binding: FragmentAdminBinding
+    private var _binding: FragmentAdminBinding? = null
+    private val binding get() = _binding!!
     private lateinit var viewModel: AdminViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_admin, container, false)
+        _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_admin, container, false)
         binding.lifecycleOwner = viewLifecycleOwner
         viewModel = ViewModelProvider(this)[AdminViewModel::class.java]
         binding.adminViewModel = viewModel
@@ -77,6 +78,11 @@ class AdminFragment : Fragment() {
             }
         }
 
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
 }

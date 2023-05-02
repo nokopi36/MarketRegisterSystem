@@ -18,7 +18,8 @@ import com.nokopi.marketregistersystem.databinding.FragmentAllUserBinding
 
 class AllUserFragment : Fragment() {
 
-    private lateinit var binding: FragmentAllUserBinding
+    private var _binding: FragmentAllUserBinding? = null
+    private val binding get() = _binding!!
     private lateinit var viewModel: AllUserViewModel
 
     override fun onCreateView(
@@ -26,7 +27,7 @@ class AllUserFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_all_user, container, false)
+        _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_all_user, container, false)
         binding.lifecycleOwner = viewLifecycleOwner
         val application = requireNotNull(this.activity).application
         val dataSource = UserDatabase.getInstance(application).userDatabaseDao
@@ -58,6 +59,11 @@ class AllUserFragment : Fragment() {
         binding.recyclerView.adapter = adapter
         binding.recyclerView.addItemDecoration(dividerItemDecoration)
 
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
 }

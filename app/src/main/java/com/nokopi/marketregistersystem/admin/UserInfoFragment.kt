@@ -17,7 +17,8 @@ import com.nokopi.marketregistersystem.dialog.ChangeBalanceDialogFragment
 
 class UserInfoFragment: Fragment() {
 
-    private lateinit var binding: FragmentUserInfoBinding
+    private var _binding: FragmentUserInfoBinding? = null
+    private val binding get() = _binding!!
     private lateinit var viewModel: UserInfoViewModel
     private val args: UserInfoFragmentArgs by navArgs()
     private lateinit var dialog: ChangeBalanceDialogFragment
@@ -28,7 +29,7 @@ class UserInfoFragment: Fragment() {
     ): View {
 
         val user = args.user
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_user_info, container, false)
+        _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_user_info, container, false)
         binding.lifecycleOwner = viewLifecycleOwner
         val application = requireNotNull(this.activity).application
         val dataSource = UserDatabase.getInstance(application).userDatabaseDao
@@ -73,6 +74,11 @@ class UserInfoFragment: Fragment() {
             }
         }
 
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
 }
