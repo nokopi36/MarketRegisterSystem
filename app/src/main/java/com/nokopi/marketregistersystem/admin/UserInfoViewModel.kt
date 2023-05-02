@@ -53,9 +53,9 @@ class UserInfoViewModel(private val database: UserDatabaseDao, private val user:
     fun updateUserInfo() {
         viewModelScope.launch {
             val updateUser = database.get(user.userId)
-            _userInfoName.value = updateUser?.userName ?: "error"
-            _userInfoId.value = updateUser?.userId ?: "error"
-            _userInfoBalance.value = updateUser?.userBalance ?: -1
+            _userInfoName.value = updateUser.userName
+            _userInfoId.value = updateUser.userId
+            _userInfoBalance.value = updateUser.userBalance
         }
     }
 

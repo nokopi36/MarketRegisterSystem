@@ -51,7 +51,8 @@
             app:layout_constraintTop_toBottomOf="@id/guideline"
             app:layout_constraintBottom_toTopOf="@id/logoutBtn"
             app:layout_constraintLeft_toRightOf="@id/chargeBalanceBtn"
-            app:layout_constraintRight_toRightOf="parent" />
+            app:layout_constraintRight_toRightOf="parent"
+            android:onClick="@{() -> userViewModel.goPurchase()}"/>
 
         <Button
             android:id="@+id/chargeBalanceBtn"

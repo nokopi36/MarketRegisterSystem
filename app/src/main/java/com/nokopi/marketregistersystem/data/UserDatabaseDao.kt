@@ -15,10 +15,13 @@ interface UserDatabaseDao {
     suspend fun delete(user: User)
 
     @Query("SELECT * FROM user_info_table WHERE user_id = :user_id")
-    suspend fun get(user_id: String): User?
+    suspend fun get(user_id: String): User
 
     @Query("SELECT user_id FROM user_info_table WHERE user_id = :user_id")
     suspend fun getUserId(user_id: String): String
+
+    @Query("SELECT user_balance FROM user_info_table WHERE user_id = :user_id")
+    suspend fun getUserBalance(user_id: String): Int
 
     @Query("SELECT * FROM user_info_table")
     fun getUserName(): LiveData<List<User>>

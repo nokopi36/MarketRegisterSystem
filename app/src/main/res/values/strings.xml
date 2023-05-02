@@ -26,4 +26,6 @@
     <string name="purchase">購入</string>
     <string name="charge_balance">残高チャージ</string>
     <string name="cancel">キャンセル</string>
+    <string name="purchase_result">合計： %d 円</string>
+    <string name="reset">リセット</string>
 </resources>
