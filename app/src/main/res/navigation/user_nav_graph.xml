@@ -14,6 +14,9 @@
         <action
             android:id="@+id/action_userFragment_to_purchaseFragment"
             app:destination="@id/purchaseFragment" />
+        <action
+            android:id="@+id/action_userFragment_to_chargeBalanceFragment"
+            app:destination="@id/chargeBalanceFragment" />
     </fragment>
     <fragment
         android:id="@+id/purchaseFragment"
@@ -24,6 +27,17 @@
             app:argType="string"/>
         <action
             android:id="@+id/action_purchaseFragment_to_userFragment"
+            app:destination="@id/userFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/chargeBalanceFragment"
+        android:name="com.nokopi.marketregistersystem.user.ChargeBalanceFragment"
+        android:label="ChargeBalanceFragment" >
+        <argument
+            android:name="inputId"
+            app:argType="string"/>
+        <action
+            android:id="@+id/action_chargeBalanceFragment_to_userFragment"
             app:destination="@id/userFragment" />
     </fragment>
 </navigation>

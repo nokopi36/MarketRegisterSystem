@@ -24,8 +24,14 @@
     <string name="purchase_product_price">値段：%d 円</string>
     <string name="logout">ログアウト</string>
     <string name="purchase">購入</string>
-    <string name="charge_balance">残高チャージ</string>
+    <string name="charge_balance">チャージ</string>
     <string name="cancel">キャンセル</string>
     <string name="purchase_result">合計： %d 円</string>
     <string name="reset">リセット</string>
+    <string name="charge_text">チャージする金額を選んでください。</string>
+    <string name="charge_result">チャージ合計： %d 円</string>
+    <string name="add_1000">+ 1000円</string>
+    <string name="add_3000">+ 3000円</string>
+    <string name="add_5000">+ 5000円</string>
+    <string name="add_10000">+ 10000円</string>
 </resources>

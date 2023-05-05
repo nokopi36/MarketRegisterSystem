@@ -46,7 +46,7 @@ class UserFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.getUser(inputId)
+        viewModel.getUser()
 
         viewModel.logout.observe(viewLifecycleOwner) {
             if (it) {
@@ -70,6 +70,15 @@ class UserFragment: Fragment() {
             if (it) {
                 val action = UserFragmentDirections.actionUserFragmentToPurchaseFragment(inputId)
                 findNavController().navigate(action)
+                viewModel.goPurchaseCompleted()
+            }
+        }
+
+        viewModel.goCharge.observe(viewLifecycleOwner) {
+            if (it) {
+                val action = UserFragmentDirections.actionUserFragmentToChargeBalanceFragment(inputId)
+                findNavController().navigate(action)
+                viewModel.goChargeCompleted()
             }
         }
 
