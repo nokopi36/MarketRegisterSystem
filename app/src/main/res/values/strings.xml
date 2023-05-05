@@ -34,4 +34,5 @@
     <string name="add_3000">+ 3000円</string>
     <string name="add_5000">+ 5000円</string>
     <string name="add_10000">+ 10000円</string>
+    <string name="scan_text">図のようにタッチしてください</string>
 </resources>
