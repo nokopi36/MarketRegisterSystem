@@ -25,7 +25,11 @@ class UserViewModel(private val database: UserDatabaseDao, private val inputId: 
     val goPurchase: LiveData<Boolean>
         get() = _goPurchase
 
-    fun getUser(inputId: String) {
+    private val _goCharge: MutableLiveData<Boolean> = MutableLiveData<Boolean>()
+    val goCharge: LiveData<Boolean>
+        get() = _goCharge
+
+    fun getUser() {
         viewModelScope.launch {
             val user = database.get(inputId)
             _balance.value = user.userBalance
@@ -47,6 +51,14 @@ class UserViewModel(private val database: UserDatabaseDao, private val inputId: 
 
     fun goPurchaseCompleted() {
         _goPurchase.value = false
+    }
+
+    fun goCharge() {
+        _goCharge.value = true
+    }
+
+    fun goChargeCompleted() {
+        _goCharge.value = false
     }
 
 }

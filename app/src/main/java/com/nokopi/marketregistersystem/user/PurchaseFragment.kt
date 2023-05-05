@@ -78,23 +78,33 @@ class PurchaseFragment : Fragment() {
         binding.recyclerView.addItemDecoration(dividerItemDecoration)
 
         viewModel.canPurchase.observe(viewLifecycleOwner) {
-            if (it) {
-                AlertDialog.Builder(requireContext())
-                    .setTitle("※最終確認")
-                    .setMessage("購入しますか？")
-                    .setPositiveButton("OK") { _, _ ->
-                        viewModel.purchase()
-                    }
-                    .setNegativeButton("No") { dialog, _ ->
-                        dialog.cancel()
-                    }
-                    .show()
-            } else {
-                AlertDialog.Builder(requireContext())
-                    .setTitle("※購入エラー")
-                    .setMessage("残高が不足しています")
-                    .setPositiveButton("OK") { _, _ -> }
-                    .show()
+            when (it) {
+                1 -> {
+                    AlertDialog.Builder(requireContext())
+                        .setTitle("※最終確認")
+                        .setMessage("購入しますか？")
+                        .setPositiveButton("OK") { _, _ ->
+                            viewModel.purchase()
+                        }
+                        .setNegativeButton("No") { dialog, _ ->
+                            dialog.cancel()
+                        }
+                        .show()
+                }
+                0 -> {
+                    AlertDialog.Builder(requireContext())
+                        .setTitle("※購入エラー")
+                        .setMessage("商品を選択してください")
+                        .setPositiveButton("OK") { _, _ -> }
+                        .show()
+                }
+                else -> {
+                    AlertDialog.Builder(requireContext())
+                        .setTitle("※購入エラー")
+                        .setMessage("残高が不足しています")
+                        .setPositiveButton("OK") { _, _ -> }
+                        .show()
+                }
             }
         }
 
