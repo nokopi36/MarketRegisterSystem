@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/admin_nav_graph"
+    app:startDestination="@id/adminFragment">
+
+    <fragment
+        android:id="@+id/adminFragment"
+        android:name="com.nokopi.marketregistersystem.admin.AdminFragment"
+        android:label="AdminFragment" >
+        <action
+            android:id="@+id/action_adminFragment_to_allUserFragment"
+            app:destination="@id/allUserFragment" />
+        <action
+            android:id="@+id/action_adminFragment_to_productFragment"
+            app:destination="@id/productFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/allUserFragment"
+        android:name="com.nokopi.marketregistersystem.admin.AllUserFragment"
+        android:label="AllUserFragment" >
+        <action
+            android:id="@+id/action_allUserFragment_to_userInfoFragment"
+            app:destination="@id/userInfoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/userInfoFragment"
+        android:name="com.nokopi.marketregistersystem.admin.UserInfoFragment"
+        android:label="UserInfoFragment" >
+        <argument
+            android:name="user"
+            app:argType="com.nokopi.marketregistersystem.data.User"/>
+        <action
+            android:id="@+id/action_userInfoFragment_to_adminFragment"
+            app:destination="@id/adminFragment"
+            app:popUpTo="@id/adminFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/productFragment"
+        android:name="com.nokopi.marketregistersystem.admin.ProductFragment"
+        android:label="ProductFragment" />
+</navigation>

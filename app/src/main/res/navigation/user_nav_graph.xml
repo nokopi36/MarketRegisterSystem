@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/user_nav_graph"
+    app:startDestination="@id/userFragment">
+
+    <fragment
+        android:id="@+id/userFragment"
+        android:name="com.nokopi.marketregistersystem.user.UserFragment"
+        android:label="UserFragment" >
+        <argument
+            android:name="inputId"
+            app:argType="string"/>
+        <action
+            android:id="@+id/action_userFragment_to_purchaseFragment"
+            app:destination="@id/purchaseFragment" />
+        <action
+            android:id="@+id/action_userFragment_to_chargeBalanceFragment"
+            app:destination="@id/chargeBalanceFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/purchaseFragment"
+        android:name="com.nokopi.marketregistersystem.user.PurchaseFragment"
+        android:label="PurchaseFragment" >
+        <argument
+            android:name="inputId"
+            app:argType="string"/>
+        <action
+            android:id="@+id/action_purchaseFragment_to_userFragment"
+            app:destination="@id/userFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/chargeBalanceFragment"
+        android:name="com.nokopi.marketregistersystem.user.ChargeBalanceFragment"
+        android:label="ChargeBalanceFragment" >
+        <argument
+            android:name="inputId"
+            app:argType="string"/>
+        <action
+            android:id="@+id/action_chargeBalanceFragment_to_userFragment"
+            app:destination="@id/userFragment" />
+    </fragment>
+</navigation>
