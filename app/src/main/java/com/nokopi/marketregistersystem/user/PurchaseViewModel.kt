@@ -26,15 +26,23 @@ class PurchaseViewModel(
     val finishPurchase: LiveData<Boolean>
         get() = _finishPurchase
 
-    private val _canPurchase: MutableLiveData<Boolean> = MutableLiveData<Boolean>()
-    val canPurchase: LiveData<Boolean>
+    private val _canPurchase: MutableLiveData<Int> = MutableLiveData<Int>()
+    val canPurchase: LiveData<Int>
         get() = _canPurchase
 
     fun isAbleToPurchase() {
-        viewModelScope.launch {
-            val user = userDatabase.get(inputId)
-            val result = (user.userBalance) - _purchaseResult.value!!
-            _canPurchase.value = result >= 0
+        if (_purchaseResult.value == 0) {
+            _canPurchase.value = 0
+        } else {
+            viewModelScope.launch {
+                val user = userDatabase.get(inputId)
+                val result = (user.userBalance) - _purchaseResult.value!!
+                if (result > 0) {
+                    _canPurchase.value = 1
+                } else {
+                    _canPurchase.value = -1
+                }
+            }
         }
     }
 
