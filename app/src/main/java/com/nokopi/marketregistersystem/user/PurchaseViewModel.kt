@@ -37,7 +37,7 @@ class PurchaseViewModel(
             viewModelScope.launch {
                 val user = userDatabase.get(inputId)
                 val result = (user.userBalance) - _purchaseResult.value!!
-                if (result > 0) {
+                if (result >= 0) {
                     _canPurchase.value = 1
                 } else {
                     _canPurchase.value = -1
