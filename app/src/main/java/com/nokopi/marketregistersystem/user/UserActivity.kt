@@ -1,12 +1,37 @@
 package com.nokopi.marketregistersystem.user
 
+import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
+import android.util.Log
+import android.view.MotionEvent
 import androidx.activity.OnBackPressedCallback
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
+import com.nokopi.marketregistersystem.NFCActivity
 import com.nokopi.marketregistersystem.R
+import kotlinx.coroutines.Runnable
 
 class UserActivity : AppCompatActivity() {
+
+    companion object {
+        const val INTERVAL_MILLISECOND : Long = 60000L
+    }
+
+    private val handler = Handler(Looper.getMainLooper())
+    private val timeOutTimer = Runnable {
+        AlertDialog.Builder(this@UserActivity)
+            .setTitle("タイムアウト")
+            .setMessage("一定時間操作がなかったためタイムアウトしました。")
+            .setPositiveButton("OK") { _, _ ->
+                val nfcIntent = Intent(this@UserActivity, NFCActivity::class.java)
+                startActivity(nfcIntent)
+            }
+            .setCancelable(false)
+            .show()
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,6 +52,29 @@ class UserActivity : AppCompatActivity() {
             // do nothing
             return
         }
+    }
+
+    override fun onTouchEvent(event: MotionEvent?): Boolean {
+        Log.i("touch", "onTouchEvent")
+        when(event?.action) {
+            MotionEvent.ACTION_DOWN -> {
+                Log.i("touch", "DOWN")
+                handler.removeCallbacks(timeOutTimer)
+                handler.postDelayed(timeOutTimer, INTERVAL_MILLISECOND)
+            }
+        }
+
+        return super.onTouchEvent(event)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        handler.postDelayed(timeOutTimer, INTERVAL_MILLISECOND)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        handler.removeCallbacks(timeOutTimer)
     }
 
 }
