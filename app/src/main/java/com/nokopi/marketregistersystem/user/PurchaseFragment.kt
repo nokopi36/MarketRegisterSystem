@@ -38,7 +38,7 @@ class PurchaseFragment : Fragment() {
         val application = requireNotNull(this.activity).application
         val userDataSource = UserDatabase.getInstance(application).userDatabaseDao
         val productDataSource = ProductDatabase.getInstance(application).productDatabaseDao
-        val viewModelFactory = PurchaseViewModelFactory(userDataSource, productDataSource, inputId)
+        val viewModelFactory = PurchaseViewModelFactory(userDataSource, productDataSource, inputId, application)
         viewModel = ViewModelProvider(this, viewModelFactory)[PurchaseViewModel::class.java]
         binding.purchaseViewModel = viewModel
 
