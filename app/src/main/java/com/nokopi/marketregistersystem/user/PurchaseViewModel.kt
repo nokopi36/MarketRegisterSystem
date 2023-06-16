@@ -1,9 +1,13 @@
 package com.nokopi.marketregistersystem.user
 
+import android.app.Application
+import android.media.AudioAttributes
+import android.media.SoundPool
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.nokopi.marketregistersystem.R
 import com.nokopi.marketregistersystem.data.Product
 import com.nokopi.marketregistersystem.data.ProductDatabaseDao
 import com.nokopi.marketregistersystem.data.User
@@ -13,7 +17,8 @@ import kotlinx.coroutines.launch
 class PurchaseViewModel(
     private val userDatabase: UserDatabaseDao,
     productDatabase: ProductDatabaseDao,
-    private val inputId: String
+    private val inputId: String,
+    application: Application
 ) : ViewModel() {
 
     var productList: LiveData<List<Product>> = productDatabase.get()
@@ -29,6 +34,10 @@ class PurchaseViewModel(
     private val _canPurchase: MutableLiveData<Int> = MutableLiveData<Int>()
     val canPurchase: LiveData<Int>
         get() = _canPurchase
+
+    private val audioAttributes = AudioAttributes.Builder().setUsage(AudioAttributes.USAGE_ALARM).build()
+    private val sound = SoundPool.Builder().setMaxStreams(1).setAudioAttributes(audioAttributes).build()
+    private val cashSound = sound.load(application, R.raw.cash, 1)
 
     fun isAbleToPurchase() {
         if (_purchaseResult.value == 0) {
@@ -55,6 +64,7 @@ class PurchaseViewModel(
                 user.userName, result
             )
             userDatabase.update(updateUser)
+            sound.play(cashSound, 1.0f, 1.0f, 0, 0, 1.0f)
             finishPurchase()
         }
     }
