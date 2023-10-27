@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MarketRegisterSystem</string>
+    <string name="app_name">eWalletRegister</string>
     <string name="name">名前</string>
     <string name="admin_register">管理者登録</string>
     <string name="admin_sign_in">管理者ログイン</string>

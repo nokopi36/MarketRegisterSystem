@@ -36,6 +36,7 @@ class UserFragment: Fragment() {
         val viewModelFactory = UserViewModelFactory(dataSource, inputId)
         viewModel = ViewModelProvider(this, viewModelFactory)[UserViewModel::class.java]
         binding.userViewModel= viewModel
+        binding.userName.isSelected = true
 
         // This callback will only be called when MyFragment is at least Started.
         val callback = requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) { }
